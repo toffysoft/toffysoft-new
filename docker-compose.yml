@@ -1,0 +1,28 @@
+version: "3.3"
+
+services:
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: nginx
+  #   restart: always
+  #   ports:
+  #     - "80:80"
+  #     # - "443:443"
+  #   expose:
+  #     # - 443
+  #     - 80
+  #   volumes:
+  #     - ./react-cms/management/:/usr/share/nginx/www/management
+  #     - ./conf/:/etc/nginx/conf.d/
+  #   depends_on:
+  #     - mongo
+  mongo:
+    image: mongo
+    container_name: mongo
+    command: --smallfiles
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: toffysoft
+      MONGO_INITDB_ROOT_PASSWORD: toffy1234
+    ports:
+      - "27017:27017"

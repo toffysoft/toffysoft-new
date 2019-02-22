@@ -1,0 +1,14 @@
+{
+  "name": "toffysoft-new",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "express-api": "cd ./express-api && npm start",
+    "dev:express-api": "cd ./express-api && npm run dev",
+    "stop": "docker-compose down"
+  },
+  "author": "toffysoft",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {}
+}
