@@ -5,6 +5,7 @@
   "scripts": {
     "express-api": "cd ./express-api && npm start",
     "dev:express-api": "cd ./express-api && npm run dev",
+    "dev:react-cms": "cd ./react-cms && npm start",
     "stop": "docker-compose down"
   },
   "author": "toffysoft",
