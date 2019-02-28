@@ -2,6 +2,9 @@ const httpStatus = require("http-status")
 const APIError = require("../utils/APIError")
 const { env } = require("../../config/vars")
 
+const setlogger = require("../../config/logger")
+let Logger = setlogger("Error")
+
 /**
  * Error handler. Send stacktrace only during development
  * @public
@@ -14,13 +17,16 @@ const handler = (err, req, res, next) => {
     stack: err.stack
   }
 
+  Logger.error(
+    `errorcode: ${err.status} - message: ${err.message} - stack: ${err.stack}`
+  )
+
   if (env !== "development") {
     delete response.stack
   }
 
   res.status(err.status)
   res.json(response)
-  // console.log("?>>>>", response)
 }
 exports.handler = handler
 

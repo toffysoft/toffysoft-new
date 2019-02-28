@@ -50,6 +50,14 @@ const userSchema = new Schema({
     default: "user",
     required: true
   },
+  services: {
+    facebook: String,
+    google: String
+  },
+  picture: {
+    type: String,
+    trim: true
+  },
   last_ip: String,
   created: {
     type: Date,
@@ -78,13 +86,13 @@ userSchema.method({
   setPassword(password) {
     this.salt = crypto.randomBytes(16).toString("hex")
     this.passwordhash = crypto
-      .pbkdf2Sync(password, this.salt, 1000, 64, "sha512")
+      .pbkdf2Sync(password, this.salt, 10000, 512, "sha512")
       .toString("hex")
   },
 
   validPassword(password) {
     let passwordhash = crypto
-      .pbkdf2Sync(password, this.salt, 1000, 64, "sha512")
+      .pbkdf2Sync(password, this.salt, 10000, 512, "sha512")
       .toString("hex")
     return this.passwordhash === passwordhash
   },

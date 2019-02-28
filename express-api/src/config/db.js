@@ -33,7 +33,7 @@ if (isDev) {
 mongoose
   .connect(dbURI, options)
   .then(connection => {
-    //Init First User
+    //Init Dev User
 
     if (!isDev || cluster.isMaster) {
       User.findOne({ username: dev.username }, (err, user) => {
